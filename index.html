@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Horário semanal – ADS Senac DF</title>
+
+  <!-- Fonte do Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <main>
+
+    <header>
+      <h1>Meu horário semanal</h1>
+      <p class="subtitulo">Análise e Desenvolvimento de Sistemas, 2º semestre · Senac DF</p>
+    </header>
+
+    <!-- ===== GRADE DE AULAS ===== -->
+    <!-- Para mudar uma matéria: troque o texto dentro do <strong> e a classe (inovacao, python, web...) -->
+    <div class="rolagem">
+      <table>
+        <thead>
+          <tr>
+            <th class="hora">Horário</th>
+            <th data-dia="1">Segunda</th>
+            <th data-dia="2">Terça</th>
+            <th data-dia="3">Quarta</th>
+            <th data-dia="4">Quinta</th>
+            <th data-dia="5">Sexta</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- Primeira aula -->
+          <tr>
+            <th class="hora">19:00 – 20:30</th>
+            <td data-dia="1"><div class="aula inovacao"><strong>Laboratório de inovação 2</strong><span>Lab. 3</span></div></td>
+            <td data-dia="2"><div class="aula python"><strong>Linguagem Técnica (Python)</strong><span>Sala 204</span></div></td>
+            <td data-dia="3"><div class="aula web"><strong>Desenvolvimento Web (Javascript)</strong><span>Lab. 1</span></div></td>
+            <td data-dia="4"><div class="aula engenharia"><strong>Engenharia de Software</strong><span>Sala 206</span></div></td>
+            <td data-dia="5"><div class="aula banco"><strong>Banco de Dados</strong><span>Sala 101</span></div></td>
+          </tr>
+
+          <!-- Intervalo -->
+          <tr class="intervalo">
+            <th class="hora">20:30 – 20:50</th>
+            <td colspan="5">Intervalo</td>
+          </tr>
+
+          <!-- Segunda aula -->
+          <tr>
+            <th class="hora">20:50 – 22:00</th>
+            <td data-dia="1"><div class="aula inovacao"><strong>Laboratório de inovação 2</strong><span>Lab. 3</span></div></td>
+            <td data-dia="2"><div class="aula python"><strong>Linguagem Técnica (Python)</strong><span>Sala 206</span></div></td>
+            <td data-dia="3"><div class="aula web"><strong>Desenvolvimento Web (Javascript)</strong><span>Lab. 1</span></div></td>
+            <td data-dia="4"><div class="aula engenharia"><strong>Engenharia de Software</strong><span>Sala 204</span></div></td>
+            <td data-dia="5"><div class="aula banco"><strong>Banco de Dados</strong><span>Sala 102</span></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ===== LEGENDA DAS MATÉRIAS ===== -->
+    <h2>Matérias do semestre</h2>
+    <ul class="legenda">
+      <li><span class="bolinha inovacao"></span><div>Inovação<small>1 aula por semana</small></div></li>
+      <li><span class="bolinha python"></span><div>Python<small>1 aula por semana</small></div></li>
+      <li><span class="bolinha engenharia"></span><div>Engenharia<small>1 aula por semana</small></div></li>
+      <li><span class="bolinha web"></span><div>Javascript<small>1 aula por semana</small></div></li>
+      <li><span class="bolinha banco"></span><div>Banco de Dados<small>1 aula por semana</small></div></li>
+    </ul>
+
+    <footer>
+      <p>Feito com HTML e CSS por Arthur Guaitanele.</p>
+    </footer>
+
+  </main>
+
+  <!-- ===== SCRIPT OPCIONAL: destaca a coluna do dia de hoje ===== -->
+  <!-- getDay() devolve 0 = domingo, 1 = segunda ... 6 = sábado -->
+  <script>
+    const hoje = new Date().getDay();
+    document.querySelectorAll('[data-dia="' + hoje + '"]').forEach(function (celula) {
+      celula.classList.add('hoje');
+    });
+  </script>
+</body>
+</html>

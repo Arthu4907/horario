@@ -1,0 +1,192 @@
+:root {
+      --papel: #F7FAFE;
+      --quadriculado: #DDE7F3;
+      --tinta: #1C2740;
+      --tinta-suave: #5A6A86;
+      --borda: #C9D6E6;
+
+      /* Uma cor para cada matéria */
+      --inovacao: #FFD873;
+      --python: #9FD8C4;
+      --engenharia: #B9B4F5;
+      --web: #FFB3A7;
+      --banco: #A9D4F5;
+      --ingles: #E3C9A8;
+
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    /* Modo escuro automático (quando o celular/PC está no tema escuro) */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --papel: #141B2B;
+        --quadriculado: #1E283C;
+        --tinta: #EEF2F9;
+        --tinta-suave: #9AA8C2;
+        --borda: #2E3A52;
+      }
+    }
+    :root[data-theme="dark"] {
+      --papel: #141B2B;
+      --quadriculado: #1E283C;
+      --tinta: #EEF2F9;
+      --tinta-suave: #9AA8C2;
+      --borda: #2E3A52;
+    }
+
+    *, *::before, *::after { box-sizing: inherit; }
+
+    /* ===== FUNDO DE CADERNO QUADRICULADO ===== */
+    body {
+      margin: 0;
+      font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--tinta);
+      background-color: var(--papel);
+      /* Duas linhas de gradiente fazem o quadriculado */
+      background-image:
+        linear-gradient(var(--quadriculado) 1px, transparent 1px),
+        linear-gradient(90deg, var(--quadriculado) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+    }
+
+    /* ===== CABEÇALHO ===== */
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1;
+      margin: 0 0 12px;
+    }
+    .subtitulo {
+      margin: 0 0 32px;
+      color: var(--tinta-suave);
+      font-size: 1.1rem;
+    }
+
+    /* ===== TABELA ===== */
+    /* Esta caixa deixa a tabela rolar para o lado no celular */
+    .rolagem {
+      overflow-x: auto;
+      border: 2px solid var(--tinta);
+      border-radius: 14px;
+      background: var(--papel);
+    }
+
+    table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid var(--borda);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    /* Cabeçalho com os dias da semana */
+    thead th {
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 14px 10px;
+      border-bottom: 2px solid var(--tinta);
+    }
+
+    /* Coluna dos horários */
+    th.hora {
+      width: 110px;
+      font-weight: 600;
+      color: var(--tinta-suave);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    /* Linha do intervalo */
+    .intervalo td {
+      text-align: center;
+      color: var(--tinta-suave);
+      font-size: 0.9rem;
+      padding: 6px;
+    }
+
+    /* ===== BLOCO DE CADA MATÉRIA ===== */
+    .aula {
+      display: block;
+      border-radius: 10px;
+      padding: 12px;
+      color: #1C2740;           /* texto escuro sempre, porque o fundo é claro */
+      min-height: 84px;
+    }
+    .aula strong {
+      display: block;
+      font-size: 1rem;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .aula span {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Cada classe pinta a matéria com a sua cor */
+    .inovacao        { background: var(--inovacao); }
+    .python      { background: var(--python); }
+    .engenharia { background: var(--engenharia); }
+    .web        { background: var(--web); }
+    .banco { background: var(--banco); }
+    .ingles     { background: var(--ingles); }
+
+    /* Destaque do dia de hoje (a classe "hoje" é colocada pelo script lá embaixo) */
+    th.hoje {
+      background: var(--tinta);
+      color: var(--papel);
+    }
+    td.hoje {
+      background: color-mix(in srgb, var(--tinta) 8%, transparent);
+    }
+
+    /* ===== LEGENDA ===== */
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 48px 0 16px;
+    }
+    .legenda {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .legenda li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+    }
+    .bolinha {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--tinta);
+      flex-shrink: 0;
+    }
+    .legenda small {
+      display: block;
+      color: var(--tinta-suave);
+    }
+
+    footer {
+      margin-top: 48px;
+      color: var(--tinta-suave);
+      font-size: 0.9rem;
+    }
